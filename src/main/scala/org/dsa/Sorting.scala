@@ -2,6 +2,9 @@ package org.dsa
 
 object Sorting {
 
+  /** Bubble sort: repeatedly swaps adjacent out-of-order elements.
+   * Time: O(n) best, O(n^2) avg/worst. Space: O(1). Stable. Mutates in place.
+   */
   def bubbleSort(x: Array[Int]): Unit = {
     var i = 0
     var swapped = true
@@ -19,7 +22,9 @@ object Sorting {
     }
   }
 
-
+  /** Merge sort: recursively splits and merges sorted halves.
+   * Time: O(n log n) all cases. Space: O(n). Stable. Returns new list, does not mutate.
+   */
   def mergeSort(xs: List[Int]): List[Int] = {
     def merge(left: List[Int], right: List[Int]): List[Int] = (left, right) match {
       case (Nil, _) => right
@@ -37,6 +42,10 @@ object Sorting {
     }
   }
 
+  /** Quick sort: partitions around a pivot (last element, Lomuto scheme), recurses on both sides.
+   * Time: O(n log n) avg, O(n^2) worst (sorted/reverse-sorted input). Space: O(log n) avg. Not stable. Mutates in place.
+   */
+
   def quickSort(x: Array[Int]): Unit = {
     def swap(i: Int, j: Int): Unit = {
       val tmp = x(i)
@@ -44,7 +53,7 @@ object Sorting {
       x(j) = tmp
     }
 
-    def partition(lo: Int, hi: Int): Int = {
+    def partition(lo: Int, hi: Int) = {
       val pivot = x(hi)
       var i = lo
 
