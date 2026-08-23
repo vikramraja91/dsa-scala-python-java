@@ -16,12 +16,6 @@
         <!-- Source: https://mvnrepository.com/artifact/org.scalatest/scalatest-funsuite -->
         <dependency>
             <groupId>org.scalatest</groupId>
-            <artifactId>scalatest-funsuite_2.13</artifactId>
-            <version>3.3.0-alpha.2</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.scalatest</groupId>
             <artifactId>scalatest_2.13</artifactId>
             <version>3.2.19</version>
             <scope>test</scope>

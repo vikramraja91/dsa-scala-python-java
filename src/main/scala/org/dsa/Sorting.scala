@@ -36,4 +36,36 @@ object Sorting {
       merge(mergeSort(left), mergeSort(right))
     }
   }
+
+  def quickSort(x: Array[Int]): Unit = {
+    def swap(i: Int, j: Int): Unit = {
+      val tmp = x(i)
+      x(i) = x(j)
+      x(j) = tmp
+    }
+
+    def partition(lo: Int, hi: Int): Int = {
+      val pivot = x(hi)
+      var i = lo
+
+      for (j <- lo until hi) {
+        if (x(j) <= pivot) {
+          swap(i, j)
+          i += 1
+        }
+      }
+      swap(i, hi)
+      i
+    }
+
+    def sort(lo: Int, hi: Int): Unit = {
+      if (lo < hi) {
+        val p = partition(lo, hi)
+        sort(lo, p - 1)
+        sort(p + 1, hi)
+      }
+    }
+
+    sort(0, x.length - 1)
+  }
 }
