@@ -28,7 +28,7 @@ class SortingTest extends AnyFunSuite with Matchers {
   }
 
   test("mergeSort handles negative numbers") {
-    Sorting.mergeSort(List(-3, 5, -1, 0, 2)) shouldBe List(-3, -1, 0, 2, 5)
+    Sorting.mergeSortArr(List(-3, 5, -1, 0, 2).toArray) shouldBe Array(-3, -1, 0, 2, 5)
   }
 
   // ---------- quickSort -------

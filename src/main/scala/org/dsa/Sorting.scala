@@ -1,5 +1,7 @@
 package org.dsa
 
+import scala.collection.mutable.ArrayBuffer
+
 object Sorting {
 
   /** Bubble sort: repeatedly swaps adjacent out-of-order elements.
@@ -41,6 +43,49 @@ object Sorting {
       merge(mergeSort(left), mergeSort(right))
     }
   }
+
+  def mergeSortArr(arr:Array[Int]) : Array[Int]= {
+
+    if (arr.length <= 1) {
+      return arr
+    } else {
+      val mid = arr.length / 2
+
+      val left = mergeSortArr(arr.slice(0, mid))
+      val right = mergeSortArr(arr.slice(mid, arr.length))
+
+      return merge(left, right)
+    }
+  }
+
+  def merge(left: Array[Int], right: Array[Int]): Array[Int] = {
+
+    var i,j = 0
+
+    val result = ArrayBuffer[Int]()
+
+    while (i < left.length && j < right.length) {
+      if (left(i) < right(j)) {
+        result += left(i)
+        i += 1
+      } else {
+        result += right(j)
+        j += 1
+      }
+    }
+
+    // Append any leftover elements from either the left or right array
+    while (i < left.length) {
+      result += left(i)
+      i += 1
+    }
+    while (j < right.length) {
+      result += right(j)
+      j += 1
+    }
+    result.toArray
+  }
+
 
   /** Quick sort: partitions around a pivot (last element, Lomuto scheme), recurses on both sides.
    * Time: O(n log n) avg, O(n^2) worst (sorted/reverse-sorted input). Space: O(log n) avg. Not stable. Mutates in place.
